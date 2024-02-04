@@ -15,6 +15,7 @@ def add_carBrand(request: HttpRequest) -> HttpResponse:
             car = CarBrand()
             car.name = form.cleaned_data['name']
             car.save()
+            # CarBrand название модели
             return HttpResponse('Ok')
     else:
         form = CarForm()
