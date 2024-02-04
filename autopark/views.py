@@ -54,7 +54,6 @@ def add_car_all(request):
             )
             car_form.save()
             # CarType название модели
-            # нет доступа к таблице CarBrand
             car_form.save()
             return HttpResponse('Ok')
     data = {
