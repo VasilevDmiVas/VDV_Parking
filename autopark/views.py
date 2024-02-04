@@ -4,7 +4,6 @@ from django.shortcuts import render
 from autopark.forms import CarForm, Car_all, CarTypeForm
 from autopark.models import CarBrand, Car, CarType
 
-
 # Create your views here.
 
 
