@@ -11,15 +11,18 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
 </head>
 <body>
-    <div class="container">
-    <form>
-{#        {% csrf_token %}#}
-{#        {{ form }}#}
-        <div class=" row offset-3 col-6">
-            <label for="input name" class="form-label">Тип автомобиля</label>
-            <input type="text" class="form-control" id="input name">
-            <div class="col-12">
-                <button type="submit" class="btn btn-primary">Добавить тип</button>
+    
+    <form method="post">
+        <br>
+        <div class="container row offset-3 col-6">
+        {% csrf_token %}
+        {{ form.name }} <br>
+{#        <div class=" row offset-3 col-6">#}
+{#            <label for="input name" class="form-label">Тип автомобиля</label>#}
+{#            <input type="text" class="form-control" id="input name">#}
+{#            <div class="col-12">#}
+        <p></p>    
+        <button type="submit" class="btn btn-primary">Добавить тип</button>
             </div>
     </form>     
 </body>

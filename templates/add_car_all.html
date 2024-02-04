@@ -8,16 +8,25 @@
     <title>Добавление всего</title>
 </head>
 <body>
-    <h1>Добавление всего</h1>
+    <h1>Добавление автомобиля на стоянку</h1>
         <form method="post">
         {% csrf_token %}
         {{ form }}
         <hr/>
+            <H2>Выберите бренд автомобиля</H2>
             {% for CarBrand in car_type %}
                 <label>
                     <input type="checkbox" name="car_type" value="{{ CarBrand.id }}"/>
                 </label>
                 {{ CarBrand.name }}<br/>
+            {% endfor %}
+        <hr/>
+            <H2>Выберите тип автомобиля</H2>
+            {% for CarType in car_brand %}
+                <label>
+                    <input type="checkbox" name="car_brand" value="{{ CarType.id }}"/>
+                </label>
+                {{ CarType.name }}
             {% endfor %}
         <p></p>
         <input type="submit" value="Дабавить марку">

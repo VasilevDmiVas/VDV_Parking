@@ -37,17 +37,20 @@ def add_carType(request: HttpRequest) -> HttpResponse:
 
 
 def add_car_all(request):
-    car_list = CarBrand.objects.all()
+    car_list_brand = CarBrand.objects.all()
+    car_list_type = CarType.objects.all()
     car_form = Car_all()
     if request.method == 'POST':
         car_form = Car_all(request.POST)
         car_type = request.POST.getlist('car_type')
+        car_brand = request.POST.getlist('car_brand')
         if car_form.is_valid():
             car_form = Car(
                 car_number=car_form.cleaned_data['car_number'],
                 year=car_form.cleaned_data['year'],
                 is_electric=car_form.cleaned_data['is_electric'],
                 car_brand=CarBrand.objects.get(id=car_type[0]),
+                car_type=CarType.objects.get(id=car_brand[0]),
             )
             car_form.save()
             # CarType название модели
@@ -55,7 +58,8 @@ def add_car_all(request):
             car_form.save()
             return HttpResponse('Ok')
     data = {
-        'car_type': car_list,
-        'form': car_form
+        'car_type': car_list_type,
+        'form': car_form,
+        'car_brand': car_list_brand
     }
     return render(request, 'add_car_all.html', context=data)
